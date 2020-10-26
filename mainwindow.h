@@ -20,11 +20,15 @@ public:
 private slots:
 
 
-protected:
+    void on_alarm_clicked();
+
+
 
     void paintEvent(QPaintEvent *event) override;
 
     void on_stoper_clicked();
+
+    void on_minutnik_2_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -4,6 +4,9 @@
 #include <QTimer>
 #include <QTime>
 #include <QWidget>
+#include <alarm.h>
+#include <stoper.h>
+#include <minutnik.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle(tr("Analog Clock"));
     resize(650, 500);  // wielkość okna
 
-    QObject::connect(ui->stoper, SIGNAL(clicked()), this, SLOT(on_stoper_clicked()));
+  // QObject::connect(ui->stoper, SIGNAL(clicked()), this, SLOT(on_stoper_clicked()));
 }
 
 
@@ -55,8 +58,9 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.setRenderHint(QPainter::Antialiasing);
     painter.translate(width() / 2, height() / 2);
     painter.scale(side / 300.0, side / 300.0);
-
-
+    
+  //if state == 'clicked';
+            
     painter.setPen(Qt::NoPen);
     painter.setBrush(godzinowaColor);
     painter.save();
@@ -83,7 +87,7 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.setPen(minutowaColor);
 
     for (int j = 0; j < 60; ++j) {
-        if ((j % 5) != 0)
+        if ((j% 5) != 0)
         painter.drawLine(92, 0, 96, 0);
         painter.rotate(6.0);
     }
@@ -102,3 +106,24 @@ void MainWindow::paintEvent(QPaintEvent *)
     }
 }
 
+
+void MainWindow::on_alarm_clicked()
+{
+    int res;
+    alarm pd(this);
+    res = pd.exec();
+}
+
+void MainWindow::on_stoper_clicked()
+{
+    int res;
+    stoper pd(this);
+    res = pd.exec();
+}
+
+void MainWindow::on_minutnik_2_clicked()
+{
+    int res;
+    minutnik pd(this);
+    res = pd.exec();
+}

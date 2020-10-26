@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>761</width>
-    <height>534</height>
+    <width>701</width>
+    <height>465</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,13 +15,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QFormLayout" name="formLayout">
-    <item row="4" column="0">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>Zamknij</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="0">
      <widget class="QPushButton" name="stoper">
       <property name="text">
@@ -30,14 +23,14 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="minutnik_2">
       <property name="text">
        <string>Minutnik</string>
       </property>
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="alarm">
       <property name="text">
        <string>Alarm</string>
       </property>
@@ -56,20 +49,27 @@
       </property>
      </spacer>
     </item>
+    <item row="4" column="0">
+     <widget class="QPushButton" name="minutnik">
+      <property name="text">
+       <string>Zamknij</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>minutnik</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>75</x>
-     <y>521</y>
+     <y>594</y>
     </hint>
     <hint type="destinationlabel">
      <x>471</x>
@@ -78,18 +78,34 @@
    </hints>
   </connection>
   <connection>
+   <sender>alarm</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>80</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>148</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>stoper</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>repaint()</slot>
+   <slot>show()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>28</y>
+     <x>57</x>
+     <y>24</y>
     </hint>
     <hint type="destinationlabel">
-     <x>161</x>
-     <y>25</y>
+     <x>350</x>
+     <y>232</y>
     </hint>
    </hints>
   </connection>

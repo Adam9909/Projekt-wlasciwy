@@ -9,14 +9,23 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    alarm.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    minutnik.cpp \
+    stoper.cpp
 
 HEADERS += \
-    mainwindow.h
+    alarm.h \
+    mainwindow.h \
+    minutnik.h \
+    stoper.h
 
 FORMS += \
-    mainwindow.ui
+    alarm.ui \
+    mainwindow.ui \
+    minutnik.ui \
+    stoper.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
