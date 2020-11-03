@@ -1,10 +1,9 @@
 #include "stoper.h"
 #include "ui_stoper.h"
-#include <QTime>
+#include <iostream>
 #include <QTimer>
-#include <QLCDNumber>
-
-int to ;
+#include <QTime>
+#include <QWidget>
 
 stoper::stoper(QWidget *parent) :
     QDialog(parent),
@@ -12,40 +11,45 @@ stoper::stoper(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->lcdNumber->display("00:00");
-
-    QTimer *timer = new QTimer(this);
-   // connect(timer, &QTimer::timeout, this, &stoper::on_startstoper_clicked);
-    timer->start(1000);
-    do{stpr++ ;
-  } while(stpr<=to);
-   // stpr=0;
-
+    astop = new QTimer(this);
+    bstop = new QTimer(this);
+    connect(astop, SIGNAL(timeout()), this, SLOT(updataTimeAndDisplay()));
 }
-
 stoper::~stoper()
 {
     delete ui;
 }
 
-
+void stoper::updataTimeAndDisplay()
+{
+    QTime time = QTime::currentTime();
+    int t = czas.msecsTo(time);
+    QTime showTime(0,0,0,0);
+    showTime = showTime.addMSecs(t);
+    pokStr = showTime.toString("mm:ss.zzz");
+    ui->lcdNumber->display(pokStr);
+}
 
 void stoper::on_startstoper_clicked()
 {
-    QTimer *timer = new QTimer(this);
-    timer->start(1000);
-
-    ui->lcdNumber->display(stpr);
-    stpr++;
-   // do{stpr++ ;
- // } while(stpr<=to);
-   // stpr=0;
-  //  to = stpr;
+    ui->startstoper->setEnabled(false);
+    ui->stopstoper->setEnabled(true);
+    czas = QTime::currentTime();
+    astop->start(1);
 }
-
 
 void stoper::on_stopstoper_clicked()
 {
-    ui->lcdNumber->display(to);
-
+    if(ui->stopstoper->text() == "Stop")
+{
+    ui->startstoper->setEnabled(false);
+    astop->stop();
+    ui->stopstoper->setText("Resetuj");
+}
+    else
+{
+    ui->lcdNumber->display("00:00.00");
+    ui->stopstoper->setText("Stop");
+    ui->startstoper->setEnabled(true);
+}
 }

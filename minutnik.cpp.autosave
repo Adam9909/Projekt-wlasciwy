@@ -41,7 +41,7 @@ void minutnik::on_rozpocznij_clicked()
     ui->label->setText(ula.toString("hh:mm:ss"));
     ui->rozpocznij->setEnabled(true);
     //amin->start(1000);
-    startTimer(-1000);
+    startTimer();
 
 }
 

@@ -20,6 +20,8 @@ private slots:
 
 private:
     Ui::alarm *ui;
+    int godz;
+    int zap;
 };
 
 #endif // ALARM_H

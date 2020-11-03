@@ -3,7 +3,12 @@
 
 #include <QDialog>
 #include <QTimer>
-#include <QLCDNumber>
+#include <QTime>
+#include <QWidget>
+#include <iostream>
+#include <QtGui>
+#include <QtCore>
+
 
 namespace Ui {
 class stoper;
@@ -18,18 +23,17 @@ public:
     ~stoper();
 
 private slots:
+    void updataTimeAndDisplay();
     void on_startstoper_clicked();
-
-
     void on_stopstoper_clicked();
 
 private:
     Ui::stoper *ui;
-    int stpr = 0 ;
-   // int to = 20 ;
-
-//protected:
-
+    QTimer *astop;
+    QTimer *bstop;
+    QTime czas;
+    QString pokStr;
+    QString Str;
 };
 
 #endif // STOPER_H

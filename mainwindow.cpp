@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle(tr("Analog Clock"));
     resize(650, 500);  // wielkość okna
 
-  // QObject::connect(ui->stoper, SIGNAL(clicked()), this, SLOT(on_stoper_clicked()));
+
 }
 
 
@@ -109,21 +109,21 @@ void MainWindow::paintEvent(QPaintEvent *)
 
 void MainWindow::on_alarm_clicked()
 {
-    int res;
+    int aa;
     alarm pd(this);
-    res = pd.exec();
+    aa = pd.exec();
 }
 
 void MainWindow::on_stoper_clicked()
 {
-    int res;
+    int bb;
     stoper pd(this);
-    res = pd.exec();
+    bb = pd.exec();
 }
 
 void MainWindow::on_minutnik_2_clicked()
 {
-    int res;
+    int cc;
     minutnik pd(this);
-    res = pd.exec();
+    cc = pd.exec();
 }
